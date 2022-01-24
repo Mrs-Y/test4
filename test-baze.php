@@ -38,8 +38,9 @@
 
     $sadrzaj = "Neki sadrzaj";
     $upit = "UPDATE `objava` 
-             SET `autor`=\"JR\" 
-             WHERE `sadrzaj`=$sadrzaj";
+             SET `autor`=? 
+             WHERE `sadrzaj`=?";
+             $statement->bind_param("ss",$objava, $sadrzaj)
     $statement = $conn->prepare($upit);
     $statement->execute();
 
@@ -94,14 +95,14 @@
     $naziv = "Neki naziv";
     $autor = "Neki autor";
     $upit = "UPDATE `knjige` 
-             SET `naziv`=`$naziv` 
-             WHERE `autor`=`$autor` ";
+             SET `naziv`=? 
+             WHERE `autor`=? ";
     $statement = $conn->prepare($upit);
     $statement->bind_param("ss", $naziv, $autor);
     $statement->execute();
 
     $upit = "DELETE * FROM `knjige` 
-             WHERE `datum_izdavanja`=\"$datum_izdavanja\"";
+             WHERE `datum_izdavanja`=?";
     $datum_izdavanja = "2020-10-21";
     $statement = $conn->prepare($upit);
     $statement->bind_param("s", $datum_izdavanja);
@@ -142,7 +143,7 @@
     $statement->bind_param("isdi", $id, $naziv, $cena, $kolicina);
     $statement->execute();
 
-    $upit = "UPDATE `artikl` SET `naziv`=\"$naziv\" WHERE `id`=$id";
+    $upit = "UPDATE `artikl` SET `naziv`=? WHERE `id`=?";
     $statement = $conn->prepare();
     $statement->bind_param("si", $id, $naziv);
     $statement->execute();
@@ -178,7 +179,7 @@
         $statement->bind_param("s", $naslov);
         $statement->execute();
 
-        $upit = "UPDATE `zadatak` SET `naslov`=\"$naslov\" WHERE `id`= $id";
+        $upit = "UPDATE `zadatak` SET `naslov`=? WHERE `id`= ?";
         $statement = $conn->prepare($upit);
         $naslov = "neki naslov";
         $id = 12;
@@ -224,7 +225,45 @@
         GROUP BY `broj`
         HAVING AVG(`broj`)>5;
 
+        Napisati PHP kod koji koristi prepared statements za sledeće CRUD
+        operacije:
+        - prikaz svih redova za kolonu `pocetak`, gde je vrednost u koloni
+        `pocetak` veća od prosleđenog datuma.
+        - menjanje vrednosti kolone `naslov` za određeni `id`, obe vrednosti
+        prosleđene.
+        - brisanje reda za prosleđen `id`
+        - unos svih vrednosti sem `id`, sve vrednosti su prosleđene.
+        nad tabelom `test` koja ima kolone `id` (INT AUTO_INCREMENT),
+        `naslov` (VARCHAR(50)), `pocetak` (DATE), `kraj` (DATE).
+        <?php
+        $select_query = $conn->prepare("SELECT * FROM `pocetak` WHERE `pocetak`>=?");
+        $datum = "2022-12-31";
+        $select_query->bind_param("s", $datum);
+        $select_query->execute();
+        $res = $select_query->get_result();
+        foreach ($res as $row) {
+            var_dump($row);
+        }
 
+        $update_query = $conn->prepare("UPDATE `test` SET `naslov`=? WHERE `id` = ? ");
+        $naslov = "Novi naslov";
+        $id = 3;
+        $update_query->bind_param("si", $naslov, $id);
+        $update_query->execute();
+
+
+        $delete_query = $conn->prepare("DELETE FROM `test` WHERE `id`=?");
+        $id = 2;
+        $delete_query->bind_param("i", $id);
+        $delete_query->execute();
+
+        $insert_query = $conn->prepare("INSERT INTO `test`(`naslov`,`pocetak`,`kraj`) VALUES (?,?,?)");
+        $naslov = "PHP naslov";
+        $pocetak = "2022-01-22";
+        $kraj = "2022-01-30";
+        $insert_query->bind_param("sss", $naslov, $pocetak, $kraj);
+        $insert_query->execute();
+        ?>
 
 </body>
 

@@ -1,0 +1,97 @@
+String - niz karaktera
+Integer - ceo broj
+Float - decimalan broj
+Boolean - istinitosna vrednost
+Array - niz
+Object - objekat
+Null - nista
+
+Konverzija se vrsi $nova = (tip)$stara;
+$b = 2+5;
+$c = 10;
+$c = $b - 3; ($c dobija vrednost 4)
+$b = $b + 1; (nije greska. stara vrednost b se uvecava za 1 i upisuje nazad u $b) Moze se napisati i kao:
+$b+=1; $b++ /// ili za smanjivanje $b = $b -1; $b-=1; $b--;
+
+Matematicke funkcije /+, -, *, /, % (ostatak), **(stepenovanje)
+
+var_dump ($prom) - provera tipa podataka
+abs (-5) - apsolutna vrednost
+max(22,14,68,18,15) - daje najveci broj
+min(3,5,1) - daje najmanji broj
+mt_rand() - slucajan ceo broj
+mt_rand(10,100) - slucajan ceo broj od 10 do 100
+sqrt(9) - koren broja
+floor(3.8) je 3 - zaokruzi na ceo broj, donja vrednost
+ceil(3.8) je 4 - zaokruzi na ceo broj (gornja vrednost)
+round(3.5) je 4 - zaokruzi broj na ceo
+number_format(5.333333, 2) - zaokruzi broj na dve decimale
+==, ===, >, <, <=,>=, !=, !==, !(uslov)
+    && - if(uslov1 && uslov2) oba moraju biti ispunjena
+    || - if(uslov1 || uslov2) ili jedan od ili oba moraju biti ispunjena
+
+    STRINGOVI
+    '' apostrofi (pretvara string u html tekst bez obzira da li je promenljiva)
+    "" - string napisan u navodnicima ce isto biti konvertovan u tekst, s tim sto ce promenljiva biti zamenjena svojom vrednoscu
+    KONKATENACIJA spajanje stringova vrsi se uz "."
+    <?php $a = "Dobar";
+    $b = "dan";
+    echo $a . $b; ?>
+
+    string funkcije:
+    -chr($broj) - vraca karakter koji je na $broj mestu u ASCII tabeli
+    -print($prom) - stampa promenljivu
+    -str_replace($stari,$novi,$string) - zamenjuje svaku vrednost $stari vrednoscu $novi u stringu $string
+    -strlen($string) - vraca broj karaktera(duzinu) prosledjenog stringa
+    -substr($string, $start, ?$length) - vraca podstring od stringa koji krece od $start pozicije
+    -explode($znak,$string) - deli string po znaku i pravi niz
+    -join($znak, $niz) - spoji clanove niza sa umetnutim znakom
+    -nl2br($str) - zameni sve \n u <br>
+    -strpos($string, $sta, $od_poz) nadji poziciju $sta u $str / case-sensitiv, od_poz se moze izostaviti
+    -stripos($string, $sta, $od_poz) - nadji $sta u $str / case-insensitiv
+    -strtolower($string) - pretvara sva slova u mala
+    -strtoupper($string) - pretvara sva slova u velika
+    -substr_count($string, $rec) - broji ponavljanja reci u stringu
+    trim($string) - brise prazna mesta sa krajeva
+
+    PHP DATUM
+    date_default_timezone_set("CET");
+    date($format) - za preuzimanje trenutnog datuma
+    "D" naziv dana 3 slova
+    "d" broj dana
+    "j" broj dana bez nule kod jednocifrenih
+    "m" broj meseca
+    "Y" za godinu
+    "y" za poslednje dve cifre u godini
+    "H" za sate u 24.formatu
+    "i" za minute
+    "s" za sekunde
+
+    PROSLEDJIVANJE podataka
+    isset - proverava da li je podatak prosledjen i ako postoji vraca TRUE ili ako ne postoji onda je NULL
+    $_GET["n"]
+    $_POST["n"]
+    <?php
+    if (isset($_GET["ime"])) {
+        $ime = $_GET["ime"];
+        $poruka = "Pozdrav, vase ime je $n";
+    } else {
+        $poruka = "Nemam podatak o imenu";
+    }
+    ?>
+
+    <a href="./phpfunkcije.php?ime=nekoime&godine=30">Prosledi parametre klikom na link</a>
+
+    $_REQUEST - koristimo ako nismo sigurni da li je $_GET ili $_POST
+
+
+    Komanda exit
+    <!-- prekida skriptu -->
+    if (!isset($_GET["ime"])) {
+    exit("Nepravilno prosledjeni podaci");
+    }
+    <!-- prebacuje na drugu stranu zbog nepravilno unetih podataka -->
+    if (!isset($_GET["godine"])) {
+    header("Location: ./index.php");
+    exit;
+    }

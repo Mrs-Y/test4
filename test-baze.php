@@ -36,13 +36,13 @@
     $statement = $conn->prepare($upit);
     $statement->execute();
 
-    $sadrzaj = "Neki sadrzaj";
-    $upit = "UPDATE `objava` 
-             SET `autor`=? 
-             WHERE `sadrzaj`=?";
-             $statement->bind_param("ss",$objava, $sadrzaj)
-    $statement = $conn->prepare($upit);
-    $statement->execute();
+    // $sadrzaj = "Neki sadrzaj";
+    // $upit = "UPDATE `objava` 
+    //          SET `autor`=? 
+    //          WHERE `sadrzaj`=?";
+    //          $statement->bind_param("ss",$objava, $sadrzaj)
+    // $statement = $conn->prepare($upit);
+    // $statement->execute();
 
     $upit = "INSERT INTO 'objava'('id','autor','sadrzaj','datum_objavljivanja') 
              VALUES (?,?,?,?)";

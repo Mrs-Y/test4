@@ -4,7 +4,7 @@
 metodu. Napraviti instancu klase i testirati sve metode. 
 Napisati metodu danasnjiDatum koja vraća instancu klase Datum za današnji dan (koristiti funkciju date)
 
-2.Napisati apstraktnu klasu Zaposleni koja ima svojstva ime, prezime, jmbg, plata, konstruktor, gettere i settere 
+2. Napisati apstraktnu klasu Zaposleni koja ima svojstva ime, prezime, jmbg, plata, konstruktor, gettere i settere 
 kao i apstraktnu metodu getStanje. Napraviti konkretne klase Radnik i Direktor. Klasa Radnik implemenitra metodu 
 getStanje tako da vraća platu pomnoženu sa 0.85 ako je plata veća od 80 000, inače vraća platu pomnoženu sa 0.9; 
 Klasa Direktor vraća platu pomnoženu sa 0.87.
@@ -15,9 +15,9 @@ Klasa Direktor vraća platu pomnoženu sa 0.87.
 konstruktor, gettere i settere kao i __toString metodu. 
 Napraviti instancu klase i testirati sve metode. Napisati metodu 
 trenutnoSati koja vraća instancu klase Casovnik za trenutno vreme 
-(koristiti funkciju date)
+(koristiti funkciju date).
 
-2.Napisati apstraktnu klasu Kartica koja ima svojstvo $stanje koje
+2. Napisati apstraktnu klasu Kartica koja ima svojstvo $stanje koje
 je celobrojna vrednost i predstavlja novac na računu sa kojim je 
 kartica povezana. Kartica ima metodu getStanje koja vraća $stanje,
 dodajNovac koja prosleđenu celobrojnu vrednost dodaje svojstvu 
@@ -32,8 +32,8 @@ ZlatnaKartica od stanja oduzima prosleđeni broj pomnožen sa 0.95.
 1. Napisati klasu Dokument koja ima svojstva naslov, tekst, 
 autor, konstruktor, gettere i settere kao i __toString metodu. 
 Napraviti instancu klase i testirati sve metode. Napisati metodu 
-prikazDokumenta koja prikazuje dokument u <div> tagu, a unutar <div> taga naslov je u <h1> tagu,
-autor u <h2> tagu a tekst u <p> tagu.
+prikazDokumenta koja prikazuje dokument u div tagu, a unutar div taga naslov je u h1 tagu,
+autor u h2 tagu a tekst u p tagu.
 
 2. Napisati klasu Kolač koja ima svojstva naziv, težina i kalorije
 , kao i konstruktor, gettere i settere i __toString metodu. 
@@ -66,7 +66,7 @@ klase UpitNamestaj, UpitMagacin i UpitProdavnica, koje implementiraju
  se prikazuje poruka “Stampac nema recenicu za ispis”. Metoda __toString vraća "Stampac koji sadrzi ___ reci za stampanje",
  gde se prikazuje koliko reci ima u nizu.
  
- 2.Napisati klasu Atribut koja ima javne vrednosti naziv i vrednost, i koja simulira atribut HTML taga. 
+ 2. Napisati klasu Atribut koja ima javne vrednosti naziv i vrednost, i koja simulira atribut HTML taga. 
  Napisati interfejs HTMLTag koji ima metode dodajAtribut(Atribut $atribut) i stampajTag(). 
  Napisati konkretne klase DivTag i PTag koje implementiraju interfejs HTMLTag. DivTag i PTag 
  imaju kao svojstvo tekst koji se prosledjuje preko konstruktora i nalazi se izmedju odgovarajuceg otvarajuceg 
